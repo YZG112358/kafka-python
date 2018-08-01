@@ -347,6 +347,11 @@ class CreatePartitionsResponse_v0(Response):
 
 
 class CreatePartitionsRequest_v0(Request):
+    """
+    Fix the bug of 'assignment' field in the protocol
+    This bug is also fixed in issue #1468 'https://github.com/dpkp/kafka-python/pull/1469'
+    This comment should be removed after merging with v1.4.3 upstream
+    """
     API_KEY = 37
     API_VERSION = 0
     RESPONSE_TYPE = CreatePartitionsResponse_v0
@@ -355,7 +360,7 @@ class CreatePartitionsRequest_v0(Request):
             ('topic', String('utf-8')),
             ('new_partitions', Schema(
                 ('count', Int32),
-                ('assignment', Array(Int32)))))),
+                ('assignment', Array(Array(Int32))))))),
         ('timeout', Int32),
         ('validate_only', Boolean)
     )
