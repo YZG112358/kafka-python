@@ -8,7 +8,6 @@ from .protocol.metadata import MetadataRequest
 """TopicPartition
 
 Fields:
-
     name (string): name of topic
     count (int): the new partition count
     broker_ids_matrix: list(list(brokerids))
